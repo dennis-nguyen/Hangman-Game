@@ -1,10 +1,12 @@
 var words = ["homer", "marge", "bart", "maggie", "lisa"];
 var random = Math.floor(Math.random() * (words.length));
 var randomWord = "";
-var lives = 6;
-var winCounter = 0;
-var guesses = [];
-var indexChecker = [];
+// var lives;
+// var winCounter;
+// var guesses;
+// var indexChecker;
+var gamesWon = 0;
+
 
 // ***PICKS A RANDOM WORD FROM ARRAY***
 function generateRandomWord() {
@@ -29,8 +31,11 @@ function guessMatch(userGuess) {
 function winOrLose(winCounter, lives) {
     if (winCounter == randomWord.length) {
         $('#winModal').modal('show');
+        gamesWon++;
+        newGame();
     } else if (lives === 0) {
         $('#loseModal').modal('show');
+        newGame();
     }
 }
 // ***CHANGES UNDERSCORES TO GUESSED LETTERS***
@@ -41,39 +46,48 @@ function appearLetters(indexChecker, userGuess) {
         }
     } else {
         lives--;
+        reduceBar(lives*20 + "%");
         $("#guessed").append(userGuess + " ");
-        $("#lives").text("You have " + lives + " lives");
+        $("#lives").text(lives);
     }
 }
-// ***RESET GAME***
-function resetGame() {
-    resetText()
-    generateRandomWord();
-    addSpaces(randomWord);
-    lives = 6;
-    $("#lives").text("You have " + lives + " lives");
-    winCounter = 0;
-    guesses = [];
-    $("#guessed").text('Your guesses:');
-    indexChecker = [];
+// ***TRACKING WINS***
+function winTracker () {
+    $("#gamesWon").text(gamesWon);
 }
 
+// ***RESET GAME***
+function newGame() {
+    resetText();
+    generateRandomWord();
+    addSpaces(randomWord);
+    winTracker();
+}
+// ***COMMENTING HERE TO MATCH EVERYTHING ELSE***
 function applyClickHandlers() {
-    $('button').click(function() {
-        resetGame();
+    $('.reset').click(function() {
+        newGame();
     });
 }
 // ***RESET TEXT***
 function resetText() {
+    lives = 5;
+    winCounter = 0;
+    guesses = [];
+    indexChecker = [];
+    $("#lives").text(lives);
     $('#letterAmount').text("");
+    $("#guessed").text('Your guesses:');
+    $(".progress").animate({width:'100%'}, 500);
+}
 
+function reduceBar(percent) {
+        $(".progress").animate({width:percent}, 500);
 }
 
 $(document).ready(function() {
     applyClickHandlers()
-    generateRandomWord();
-    addSpaces(randomWord); //ADDING UNDERSCORES
-    $("#lives").text("You have " + lives + " lives"); // ***STARTING LIVES***
+    newGame();
 
     // ***ON KEY PRESS***
     $(document).keypress(function(event) {
