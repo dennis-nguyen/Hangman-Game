@@ -6,6 +6,7 @@ var randomWord = "";
 // var guesses;
 // var indexChecker;
 var gamesWon = 0;
+var donutBite = 0;
 
 
 // ***PICKS A RANDOM WORD FROM ARRAY***
@@ -30,10 +31,13 @@ function guessMatch(userGuess) {
 // ***CHECK FOR WIN OR LOSE***
 function winOrLose(winCounter, lives) {
     if (winCounter == randomWord.length) {
+        $('.theWord').text(randomWord.toUpperCase());
         $('#winModal').modal('show');
         gamesWon++;
+        $('#smart')[0].play();
         newGame();
     } else if (lives === 0) {
+        $('#doh')[0].play();
         $('#loseModal').modal('show');
         newGame();
     }
@@ -46,13 +50,15 @@ function appearLetters(indexChecker, userGuess) {
         }
     } else {
         lives--;
-        reduceBar(lives*20 + "%");
+        donutBite++;
+        reduceBar(lives * 20 + "%");
+        reduceDonut(donutBite * (-175))
         $("#guessed").append(userGuess + " ");
         $("#lives").text(lives);
     }
 }
 // ***TRACKING WINS***
-function winTracker () {
+function winTracker() {
     $("#gamesWon").text(gamesWon);
 }
 
@@ -75,25 +81,32 @@ function resetText() {
     winCounter = 0;
     guesses = [];
     indexChecker = [];
+    donutBite = 0;
     $("#lives").text(lives);
     $('#letterAmount').text("");
     $("#guessed").text('Your guesses:');
-    $(".progress").animate({width:'100%'}, 500);
+    $(".active").animate({ width: '100%' }, 500);
+    $("#donut").css("background-position", "0, 0");
 }
 
 function reduceBar(percent) {
-        $(".progress").animate({width:percent}, 500);
+    $(".active").animate({ width: percent }, 0);
+}
+
+function reduceDonut(lives) {
+    $("#donut").css("background-position", lives+"px");
 }
 
 $(document).ready(function() {
     applyClickHandlers()
     newGame();
 
+
     // ***ON KEY PRESS***
     $(document).keypress(function(event) {
 
         var userGuess = event.key.toLowerCase();
-        if (userGuess.match(/[a-z]/i) && (guesses.indexOf(userGuess) == -1)) { // ***CHECK IF INPUT IS A LETTER***
+        if (userGuess.match(/[a-z]/i) && (guesses.indexOf(userGuess) == -1)) { // ***CHECK IF INPUT IS A LETTER AND NOT A DUPLICATE***
             guesses.push(userGuess);
             guessMatch(userGuess);
             appearLetters(indexChecker, userGuess);

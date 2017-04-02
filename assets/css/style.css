@@ -1,0 +1,29 @@
+/*body {
+    background-image: url("../images/simpsons.jpg");
+    background-color: #cccccc;
+    height: 100%;
+}*/
+
+html{
+	/* This image will be displayed fullscreen */
+	background:url('../images/simpsons.jpg') no-repeat center center;
+
+	/* Ensure the html element always takes up the full height of the browser window */
+	min-height:100%;
+
+	/* The Magic */
+	background-size:cover;
+}
+
+body{
+	/* Workaround for some mobile browsers */
+	min-height:100%;
+	color: #285DB8;
+}
+
+#donut {
+    width: 170px;
+    height: 180px;
+    background: url('../images/donut.png');
+    background-position: 0 0;
+}
