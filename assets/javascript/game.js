@@ -111,7 +111,7 @@ $(document).ready(function() {
     // ***ON KEY PRESS***
     $(document).keypress(function(event) {
         var userGuess = event.key.toLowerCase();
-        if(event.keyCode > 96 && event.keyCode < 123 && (guesses.indexOf(userGuess) == -1)) { // ***CHECK IF INPUT IS A LETTER AND NOT A DUPLICATE***
+        if(event.which > 64 && event.which < 123 && (guesses.indexOf(userGuess) == -1)) { // ***CHECK IF INPUT IS A LETTER AND NOT A DUPLICATE***
             guesses.push(userGuess);
             guessMatch(userGuess);
             appearLetters(indexChecker, userGuess);
