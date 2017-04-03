@@ -7,7 +7,6 @@ var indexChecker;
 var gamesWon = 0;
 var donutBite = 0;
 
-
 // ***PICKS A RANDOM WORD FROM ARRAY***
 function generateRandomWord() {
     randomWord = words[Math.floor(Math.random() * (words.length))];
@@ -104,7 +103,6 @@ function reduceBar(percent) {
 function reduceDonut(lives) {
     $("#donut").css("background-position", lives + "px");
 }
-
 $(document).ready(function() {
     applyClickHandlers();
     newGame();
@@ -112,7 +110,7 @@ $(document).ready(function() {
     $(document).keypress(function(event) {
         var userGuess = event.key.toLowerCase();
         console.log(event.which);
-        if((event.which >= 65 && event.which <= 90) || ((event.which >= 97 && event.which <= 122)) && (guesses.indexOf(userGuess) == -1)) { // ***CHECK IF INPUT IS A LETTER AND NOT A DUPLICATE***
+        if ((event.which >= 65 && event.which <= 90) || ((event.which >= 97 && event.which <= 122)) && (guesses.indexOf(userGuess) == -1)) { // ***CHECK IF INPUT IS A LETTER AND NOT A DUPLICATE***
             guesses.push(userGuess);
             guessMatch(userGuess);
             appearLetters(indexChecker, userGuess);
