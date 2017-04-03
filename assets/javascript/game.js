@@ -15,9 +15,9 @@ function generateRandomWord() {
 function addSpaces(randomWord) {
     for (var i = 0; i < randomWord.length; i++) {
         if (randomWord[i] != " ") {
-            $("<span class='letters'>").text("_ ").appendTo("#letterAmount");
+            $("<span class='letters'>").text("_ ").appendTo("#chalk");
         } else {
-            $("<span class='letters'>").html('&nbsp&nbsp&nbsp;').appendTo("#letterAmount");
+            $("<span class='letters'>").html('&nbsp&nbsp&nbsp;').appendTo("#chalk");
             winCounter++;
         }
     }
@@ -90,7 +90,7 @@ function resetText() {
     indexChecker = [];
     donutBite = 0;
     $("#lives").text(lives);
-    $('#letterAmount').text("");
+    $('#chalk').text("");
     $("#guessed").text('Your guesses:');
     $(".active").animate({ width: '100%' }, 500);
     $("#donut").css("background-position", "0, 0");

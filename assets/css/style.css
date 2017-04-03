@@ -34,6 +34,7 @@ body {
 .jumbotron {
     padding-top: 5px;
     padding-bottom: 15px;
+
 }
 
 .progress {
@@ -47,4 +48,26 @@ body {
 
 sup {
     color: red;
+}
+
+#chalk {
+	background-image: url('../images/chalkboard.jpg');
+	height: 220px;
+	width: 410px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding-top: 70px;
+	padding-left: 30px;
+}
+
+.letters {
+	color: white;
+	font-size: 20px;
+}
+
+#guessed {
+	position: absolute;
+	margin-top: 210px;
+	z-index: 1;
+	color: white;
 }

@@ -16,18 +16,20 @@
             <h1 class="red">The Simpsons<sup>Hangman</sup></h1>
             <p class="lead">Press any key on the keyboard to place your guess!</p>
             <hr class="my-1">
-            <div id="answer"></div>
-            <div id="letterAmount"> </div>
+            <div id="letterAmount"> <div id="guessed"><p> Your guesses:</p></div> </div>
             <br>
-            <div id="guessed">Your guesses:</div>
+            <div class="row">
+                <div class="col-md-1" id="chalk"></div>
+                <div class="col-md-1 col-md-offset-1" id="donut"> </div>
+            </div>
             <br>
-            <div id="donut"> </div>
+            
             <!-- PROGRESS BAR -->
-            <div class="progress">
+            <!--  <div class="progress">
                 <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                     <span id="lives"></span> CHANCE(S)
                 </div>
-            </div>
+            </div> -->
             <div>Games Won:&nbsp;<span id="gamesWon"></span></div>
             <br>
             <button class="reset">Restart Game</button>
