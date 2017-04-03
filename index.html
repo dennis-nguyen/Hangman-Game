@@ -2,8 +2,8 @@
 <html>
 
 <head>
-    <title>Animation Domination Hangman!</title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css">
+    <title>The Simpsons Hangman!</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="assets/javascript/game.js"></script>
@@ -13,43 +13,40 @@
 <body>
     <div class="container col-md-6 col-md-offset-1">
         <div class="jumbotron">
-            <h1 class="display-4">Welcome to Hangman!</h1>
+            <h1 class="red">The Simpsons<sup>Hangman</sup></h1>
             <p class="lead">Press any key on the keyboard to place your guess!</p>
             <hr class="my-1">
             <div id="answer"></div>
             <div id="letterAmount"> </div>
             <br>
-            <div id="guessed">Your guesses: </div>
+            <div id="guessed">Your guesses:</div>
             <br>
             <img class="img-responsive" id="donut">
-            <div>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                        <span id="lives"></span> CHANCE(S)
-                    </div>
+            <!-- PROGRESS BAR -->
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                    <span id="lives"></span> CHANCE(S)
                 </div>
             </div>
-            <br>
-            <div>Games Won:<span id="gamesWon"></span></div>
+            <div>Games Won:&nbsp;<span id="gamesWon"></span></div>
             <br>
             <button class="reset">Restart Game</button>
         </div>
         <!-- WIN MODAL -->
         <div class="modal fade" id="winModal" role="dialog">
             <div class="modal-dialog">
-                <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">YOU FUCKING WIN</h4>
+                        <h4 class="modal-title">Eat a donut! You deserve it!</h4>
                     </div>
                     <div class="modal-body">
                         <p>
-                            <img src="https://img.gifamerica.com/be7ff9a0204fd9bf0a464d47dbcde1c3_download-upload-gif-homer-simpson-i-am-so-smart-gif_372-215.gif" width="372" alt="homer simpson i am so smart gif" />
+                            <img src="assets/images/smartwin.gif" width="372" alt="homer simpson i am so smart gif" />
                         </p>
                     </div>
                     <div class="modal-footer">
-                        <p class="pull-left">Nice! The word again was: </p><span class="theWord text-left pull-left"></span>
+                        <p class="pull-left">Nice! The word again was: &nbsp;</p><span class="theWord text-left pull-left"></span>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -58,31 +55,24 @@
         <!-- LOSE MODAL -->
         <div class="modal fade" id="loseModal" role="dialog">
             <div class="modal-dialog">
-                <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">YOU LOST! LEAVE IN SHAME!</h4>
+                        <h4 class="modal-title">At least you have your good looks!</h4>
                     </div>
                     <div class="modal-body">
                         <p>
-                            <img src="https://img.gifamerica.com/5b85d3657a0e9e0740f9a13c7e26be4f_doh-gif-homer-simpsons-homer-doh-animated-gif_498-372.gif" width="498" alt="homer doh animated gif" />
+                            <img src="assets/images/dohlose.gif" width="498" alt="homer doh animated gif" />
                         </p>
                     </div>
                     <div class="modal-footer">
-                        <p class="pull-left">Nice! The word again was: </p><span class="theWord text-left pull-left"></span>
+                        <p class="pull-left">Sorry! The word was: &nbsp;</p><span class="theWord text-left pull-left"></span>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    
-
-
-
-
     <audio id="smart" src="assets/sounds/smart.mp3"></audio>
     <audio id="doh" src="assets/sounds/doh.mp3"></audio>
 </body>

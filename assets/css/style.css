@@ -1,24 +1,13 @@
-/*body {
-    background-image: url("../images/simpsons.jpg");
-    background-color: #cccccc;
-    height: 100%;
-}*/
-
-html{
-	/* This image will be displayed fullscreen */
-	background:url('../images/simpsons.jpg') no-repeat center center;
-
-	/* Ensure the html element always takes up the full height of the browser window */
-	min-height:100%;
-
-	/* The Magic */
-	background-size:cover;
+html {
+    background: url('../images/simpsons.jpg') no-repeat center center;
+    min-height: 100%;
+    background-size: cover;
 }
 
-body{
-	/* Workaround for some mobile browsers */
-	min-height:100%;
-	color: #285DB8;
+body {
+    min-height: 100%;
+    color: #285DB8;
+ 	background-color: rgba(225, 225, 225, 0);
 }
 
 #donut {
@@ -26,4 +15,36 @@ body{
     height: 180px;
     background: url('../images/donut.png');
     background-position: 0 0;
+}
+
+.jumbotron h1 {
+    font-family: simpsons;
+    color: #FFD90F;
+}
+
+@font-face {
+    font-family: simpsons;
+    src: url(sfont.ttf);
+}
+
+.progress .lives {
+    position: relative;
+}
+
+.jumbotron {
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+.progress {
+    height: 40px;
+    background-color: #FFD90F;
+}
+
+#lives {
+    line-height: 40px;
+}
+
+sup {
+    color: red;
 }
