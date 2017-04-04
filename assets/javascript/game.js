@@ -1,4 +1,4 @@
-var words = ["homer simpson", "marge simpson", "bart simpson", "maggie simpson", "lisa simpson", "crazy cat lady", "chief wiggum", "ralph wiggum", "fat tony", "sexy flanders", "krusty", "otto mann", "apu", "radioactive man", "itchy", "scratchy", "reverend lovejoy", "disco stu", "spider pig", "fallout boy", "springfield"];
+var words = ["homer simpson", "marge simpson", "bart simpson", "maggie simpson", "lisa simpson", "thrillhouse", "millhouse", "chillhouse", "crazy cat lady", "chief wiggum", "ralph wiggum", "fat tony", "sexy flanders", "krusty", "otto mann", "apu", "radioactive man", "itchy", "scratchy", "reverend lovejoy", "disco stu", "spider pig", "fallout boy", "springfield"];
 var randomWord = "";
 var lives;
 var winCounter;
@@ -101,7 +101,6 @@ $(document).ready(function() {
     // ***ON KEY PRESS***
     $(document).keypress(function(event) {
         var userGuess = event.key.toLowerCase();
-        console.log(event.which);
         if ((event.which >= 65 && event.which <= 90) || ((event.which >= 97 && event.which <= 122)) && (guesses.indexOf(userGuess) == -1)) { // ***CHECK IF INPUT IS A LETTER AND NOT A DUPLICATE***
             guesses.push(userGuess);
             guessMatch(userGuess);
