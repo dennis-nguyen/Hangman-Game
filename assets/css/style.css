@@ -7,7 +7,7 @@ html {
 body {
     min-height: 100%;
     color: #285DB8;
- 	background-color: rgba(225, 225, 225, 0);
+    background-color: rgba(225, 225, 225, 0);
 }
 
 #donut {
@@ -15,6 +15,7 @@ body {
     height: 180px;
     background: url('../images/donut.png');
     background-position: 0 0;
+    margin-left: 10px;
 }
 
 .jumbotron h1 {
@@ -27,23 +28,21 @@ body {
     src: url(sfont.ttf);
 }
 
-.progress .lives {
-    position: relative;
+@font-face {
+    font-family: chalk;
+    src: url(chalk.ttf);
 }
 
 .jumbotron {
     padding-top: 5px;
     padding-bottom: 15px;
-
-}
-
-.progress {
-    height: 40px;
-    background-color: #FFD90F;
 }
 
 #lives {
-    line-height: 40px;
+    position: absolute;
+    margin-top: 78px;
+    margin-left: 65px;
+    font-family: simpsons;
 }
 
 sup {
@@ -51,23 +50,36 @@ sup {
 }
 
 #chalk {
-	background-image: url('../images/chalkboard.jpg');
-	height: 220px;
-	width: 410px;
-	background-size: cover;
-	background-repeat: no-repeat;
-	padding-top: 70px;
-	padding-left: 30px;
+    background-image: url('../images/chalkboard.jpg');
+    height: 240px;
+    width: 450px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 50px;
+    padding-left: 30px;
+    font-family: chalk;
 }
 
 .letters {
-	color: white;
-	font-size: 20px;
+    color: white;
+    font-size: 35px;
 }
 
 #guessed {
-	position: absolute;
-	margin-top: 210px;
-	z-index: 1;
-	color: white;
+    position: absolute;
+    margin-top: 210px;
+    z-index: 1;
+    color: white;
+    font-family: chalk;
+    font-size: 20px;
+}
+
+.gamesWon {
+    position: absolute;
+    margin-left: 310px;
+    margin-top: 30px;
+    z-index: 1;
+    color: white;
+    font-family: chalk;
+    font-size: 20px;
 }

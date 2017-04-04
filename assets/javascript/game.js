@@ -1,4 +1,4 @@
-var words = ["homer simpson", "marge simpson", "bart simpson", "maggie simpson", "lisa simpson", "crazy cat lady", "chief wiggum", "ralph wiggum", "fat tony", "ned flanders", "krusty the clown", "otto mann", "apu nahasapeemapetilon", "radioactive man", "itchy", "scratchy", "reverend lovejoy", "disco stu", "spider pig", "fallout boy", "springfield"];
+var words = ["homer simpson", "marge simpson", "bart simpson", "maggie simpson", "lisa simpson", "crazy cat lady", "chief wiggum", "ralph wiggum", "fat tony", "sexy flanders", "krusty", "otto mann", "apu", "radioactive man", "itchy", "scratchy", "reverend lovejoy", "disco stu", "spider pig", "fallout boy", "springfield"];
 var randomWord = "";
 var lives;
 var winCounter;
@@ -48,19 +48,16 @@ function winOrLose(winCounter, lives) {
 }
 // ***CHANGES UNDERSCORES TO GUESSED LETTERS***
 function appearLetters(indexChecker, userGuess) {
-    var barParam = lives * 14.285 + "%";
-    var donutParam = donutBite * (-175)
-
+    var donutParam = (donutBite * (-172))
     if (indexChecker.length > 0) {
         for (j = 0; j < indexChecker.length; j++) {
-            $($('.letters')[indexChecker[j]]).text(userGuess);
+            $($('.letters')[indexChecker[j]]).text(userGuess.toUpperCase());
         }
     } else {
         lives--;
         donutBite++;
-        reduceBar(barParam);
         reduceDonut(donutParam);
-        $("#guessed").append(" " + userGuess);
+        $("#guessed").append(" " + userGuess.toUpperCase());
         $("#lives").text(lives);
     }
 }
@@ -88,16 +85,11 @@ function resetText() {
     winCounter = 0;
     guesses = [];
     indexChecker = [];
-    donutBite = 0;
+    donutBite = 1;
     $("#lives").text(lives);
     $('#chalk').text("");
     $("#guessed").text('Your guesses:');
-    $(".active").animate({ width: '100%' }, 500);
     $("#donut").css("background-position", "0, 0");
-}
-//**REDUCES PROGRESS BAR**
-function reduceBar(percent) {
-    $(".active").animate({ width: percent }, 0);
 }
 //**MOVES SPRITE IMAGE FOR DONUT BITES**
 function reduceDonut(lives) {
