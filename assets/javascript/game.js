@@ -31,21 +31,6 @@ function guessMatch(userGuess) {
         }
     }
 }
-// ***CHECK FOR WIN OR LOSE***
-function winOrLose(winCounter, lives) {
-    if (winCounter == randomWord.length) {
-        $('.theWord').text(randomWord.toUpperCase());
-        $('#winModal').modal('show');
-        gamesWon++;
-        $('#smart')[0].play();
-        newGame();
-    } else if (lives === 0) {
-        $('.theWord').text(randomWord.toUpperCase());
-        $('#doh')[0].play();
-        $('#loseModal').modal('show');
-        newGame();
-    }
-}
 // ***CHANGES UNDERSCORES TO GUESSED LETTERS***
 function appearLetters(indexChecker, userGuess) {
     var donutParam = (donutBite * (-172))
@@ -61,23 +46,32 @@ function appearLetters(indexChecker, userGuess) {
         $("#lives").text(lives);
     }
 }
-// ***TRACKING WINS***
+// ***CHECK FOR WIN OR LOSE CONDITION***
+function winOrLose(winCounter, lives) {
+    if (winCounter == randomWord.length) {
+        $('.theWord').text(randomWord.toUpperCase());
+        $('#winModal').modal('show');
+        gamesWon++;
+        $('#smart')[0].play();
+        newGame();
+    } else if (lives === 0) {
+        $('.theWord').text(randomWord.toUpperCase());
+        $('#doh')[0].play();
+        $('#loseModal').modal('show');
+        newGame();
+    }
+}
+// ***TRACKING TOTAL WINS***
 function winTracker() {
     $("#gamesWon").text(gamesWon);
 }
 
-// ***RESET GAME***
+// ***STARTS NEW GAME***
 function newGame() {
     resetText();
     generateRandomWord();
     addSpaces(randomWord);
     winTracker();
-}
-// ***COMMENTING HERE TO MATCH EVERYTHING ELSE***
-function applyClickHandlers() {
-    $('.reset').click(function() {
-        newGame();
-    });
 }
 // ***RESET TEXT***
 function resetText() {
@@ -91,22 +85,34 @@ function resetText() {
     $("#guessed").text('Your guesses:');
     $("#donut").css("background-position", "0, 0");
 }
-//**MOVES SPRITE IMAGE FOR DONUT BITES**
+// ***COMMENTING HERE TO MATCH EVERYTHING ELSE***
+function applyClickHandlers() {
+    $('.reset').click(function() {
+        newGame();
+    });
+}
+// ***MOVES SPRITE IMAGE FOR DONUT BITES***
 function reduceDonut(lives) {
     $("#donut").css("background-position", lives + "px");
 }
-$(document).ready(function() {
-    applyClickHandlers();
-    newGame();
-    // ***ON KEY PRESS***
-    $(document).keypress(function(event) {
-        var userGuess = event.key.toLowerCase();
-        if ((event.which >= 65 && event.which <= 90) || ((event.which >= 97 && event.which <= 122)) && (guesses.indexOf(userGuess) == -1)) { // ***CHECK IF INPUT IS A LETTER AND NOT A DUPLICATE***
+// ***CHECKS IF KEYPRESS IS A LETTER ON CHROME AND STUPID FIREFOX(OTHER METHODS ON FIREFOX REGISTERED FUNCTION KEYS)***
+function checkLetter(event) {
+    var userGuess = event.key.toLowerCase();
+    if ($("#loseModal").css("display") !== "block" && $("#winModal").css("display") !== "block") {
+        if ((event.which >= 65 && event.which <= 90) || ((event.which >= 97 && event.which <= 122)) && (guesses.indexOf(userGuess) == -1)) { 
             guesses.push(userGuess);
             guessMatch(userGuess);
             appearLetters(indexChecker, userGuess);
         }
         winOrLose(winCounter, lives);
         indexChecker = [];
+    }
+}
+$(document).ready(function() {
+    applyClickHandlers();
+    newGame();
+    // ***ON KEY PRESS***
+    $(document).keypress(function(event) {
+        checkLetter(event);
     });
 });
